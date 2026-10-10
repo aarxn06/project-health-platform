@@ -1,0 +1,31 @@
+:root {
+  /* Section 2.1 Mandatory Dark Theme Colour Tokens */
+  --bg-app: #0A0A0C;
+  --bg-sidebar: #08080A;
+  --bg-card: #111114;
+  --bg-card-hover: #16161A;
+  --bg-input: #0E0E11;
+  --border: #1F1F25;
+  --border-strong: #2A2A32;
+  --text-primary: #F4F4F5;
+  --text-secondary: #A1A1AA;
+  --text-muted: #6B6B76;
+  --accent-violet: #7C5CFF;
+  --accent-blue: #4C8DFF;
+  --success: #22C55E;
+  --warning-yellow: #EAB308;
+  --warning-orange: #F97316;
+  --danger: #EF4444;
+
+  /* Compatibility aliases so all components resolve cleanly */
+  --bg-main: #0A0A0C;
+  --bg-dashboard: #0A0A0C;
+  --bg-card-secondary: #0E0E11;
+  --border-card: #1F1F25;
+  --accent-primary: #7C5CFF;
+  --accent-secondary: #4C8DFF;
+  --accent-warning: #F97316;
+  --risk-critical: #EF4444;
+  --risk-medium: #EAB308;
+}
+

@@ -1,0 +1,47 @@
+# Python / Backend
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+backend/venv/
+backend/.venv/
+venv/
+.venv/
+*.egg-info/
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Database & Local Storage
+*.db
+*.sqlite
+*.sqlite3
+backend/instance/
+backend/uploads/
+backend/temp_extract/
+backend/generated_reports/
+backend/ml/models/*.pkl
+backend/ml/models/*.joblib
+
+# Node / Frontend
+frontend/node_modules/
+frontend/dist/
+frontend/build/
+frontend/.vite/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Environment
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# IDE / OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
