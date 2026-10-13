@@ -29,9 +29,11 @@ jobs:
         run: python -m pip install -r backend/requirements.txt
       - name: Run existing platform regression tests (rule-based baseline)
         working-directory: backend
-        env:
-          ML_MODEL_PATH: ml/models/nonexistent-model-for-legacy-tests.joblib
-        run: python -m pytest tests/test_platform.py -q
+        run: |
+          # The original suite assumes no installed model. Hide it only in
+          # this temporary CI checkout; the actual Git branch is unchanged.
+          mv ml/models/defect_predictor.joblib ml/models/defect_predictor.joblib.disabled
+          python -m pytest tests/test_platform.py -q
 
   frontend-build:
     if: github.ref == 'refs/heads/version-007'
