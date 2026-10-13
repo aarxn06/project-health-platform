@@ -51,11 +51,15 @@ jobs:
         working-directory: backend
         run: python -m pytest tests/test_class_metrics.py -q
 
+      - name: Validate frozen model on unrelated Java datasets
+        working-directory: backend
+        run: python ml/validate_cross_project.py
+
       - name: Commit generated artifacts to version-007 only
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add backend/ml/models/model_metadata.json backend/ml/models/evaluation_results.json backend/ml/models/evaluation_results.csv backend/ml/models/confusion_matrix.png
+          git add backend/ml/models/model_metadata.json backend/ml/models/evaluation_results.json backend/ml/models/evaluation_results.csv backend/ml/models/confusion_matrix.png backend/ml/models/cross_project_validation.json backend/ml/models/cross_project_validation.csv
           git add -f backend/ml/models/defect_predictor.joblib
           if ! git diff --cached --quiet; then
             git commit -m "Train and publish Ant 1.7 ML model (version-007)"
