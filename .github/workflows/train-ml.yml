@@ -63,5 +63,17 @@ jobs:
           git add -f backend/ml/models/defect_predictor.joblib
           if ! git diff --cached --quiet; then
             git commit -m "Train and publish Ant 1.7 ML model (version-007)"
-            git push origin HEAD:refs/heads/version-007
+            # Other collaborators and workflows can move version-007 during
+            # training. Rebase generated artifacts instead of force-pushing.
+            for attempt in 1 2 3; do
+              git fetch origin version-007
+              git rebase origin/version-007
+              if git push origin HEAD:refs/heads/version-007; then
+                exit 0
+              fi
+              if [ "$attempt" -eq 3 ]; then
+                echo "Unable to publish generated results after three attempts" >&2
+                exit 1
+              fi
+            done
           fi
