@@ -59,7 +59,8 @@ try {
   await page.screenshot({ path: path.join(OUT, '03-dashboard.png'), fullPage: true });
   console.log('PASS: Dashboard renders uploaded project');
 
-  const phone = await context.newPage({ viewport: { width: 390, height: 844 } });
+  const mobileContext = await browser.newContext({ viewport: { width: 390, height: 844 } });
+  const phone = await mobileContext.newPage();
   phone.on('pageerror', err => errors.push(err.message));
   await phone.goto(ORIGIN + '/analysis', { waitUntil: 'domcontentloaded' });
   await phone.getByText('OrderProcessor.java').first().waitFor({ timeout: 30000 });
