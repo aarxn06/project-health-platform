@@ -109,7 +109,7 @@ def test_project_api_returns_persisted_class_predictions():
             assert res.status_code == 201, res.get_json()
             run_id = res.get_json()["data"]["analysis_run"]["id"]
             detail = client.get(f"/api/analysis/{run_id}").get_json()["data"]
-            assert detail["analysis_run"]["scoring_mode"] == "ML_MODEL_PREDICTION"
+            assert detail["scoring_mode"] == "ML_MODEL_PREDICTION"
             file_data = detail["files"][0]
             assert len(file_data["class_metrics"]) == 2
             assert len(file_data["class_predictions"]) == 2
