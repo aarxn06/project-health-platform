@@ -47,6 +47,10 @@ jobs:
         working-directory: backend
         run: python -m pytest ml/test_trained_model.py -q
 
+      - name: Test class-level extraction, aggregation, and API persistence
+        working-directory: backend
+        run: python -m pytest tests/test_class_metrics.py -q
+
       - name: Commit generated artifacts to version-007 only
         run: |
           git config user.name "github-actions[bot]"
