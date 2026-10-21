@@ -14,6 +14,7 @@ import {
   Menu,
   X,
   ChevronRight,
+  ArrowLeft,
   FolderGit2,
   CheckCircle2,
   AlertCircle,
@@ -292,6 +293,15 @@ export default function Layout({ children }) {
           <div className="flex flex-wrap items-center justify-between gap-3">
             {/* Left: Title, Breadcrumbs, and Status Line */}
             <div className="flex items-center gap-3 min-w-0">
+              <button
+                type="button"
+                onClick={() => window.history.state?.idx > 0 ? navigate(-1) : navigate('/')}
+                aria-label="Go back to previous page"
+                title="Back"
+                className="p-1.5 rounded-lg bg-[#111114] border border-[#1F1F25] text-[#A1A1AA] hover:text-[#F4F4F5] hover:border-[#7C5CFF]/50 transition-colors"
+              >
+                <ArrowLeft className="w-4 h-4" />
+              </button>
               <button
                 type="button"
                 onClick={() => setMobileOpen(true)}
