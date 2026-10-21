@@ -94,7 +94,7 @@ export default function DashboardPage() {
   };
 
   // Loading Skeleton State (Section 2.3)
-  if (loadingInitial || (loadingDashboard && !dashboard)) {
+  if (loadingInitial) {
     return <LoadingSkeleton rows={4} />;
   }
 
@@ -114,6 +114,10 @@ export default function DashboardPage() {
   // Empty State when no project has been analyzed (Section 2.4)
   if (!activeProject || !activeRun || (dashboard && !dashboard.has_project)) {
     return <EmptyProjectState />;
+  }
+
+  if (loadingDashboard && !dashboard) {
+    return <LoadingSkeleton rows={4} />;
   }
 
   const summary = dashboard?.active_run || activeRun;
